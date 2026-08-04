@@ -1,0 +1,150 @@
+/* Amul Kool Full Laptop Screen Frame Animation */
+:root {
+  --bg-dark: #07090e;
+  --color-primary: #e2165f;
+  --color-accent: #ffb703;
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Be Vietnam Pro', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: clip;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(226, 22, 95, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(226, 22, 95, 0.8);
+}
+
+/* Preloader Overlay */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background-color: #040508;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-content {
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.loader-ring {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  border-top-color: var(--color-accent);
+  border-right-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ring-core {
+  width: 22px;
+  height: 22px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--color-primary);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loader-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.loader-title span {
+  background: linear-gradient(135deg, var(--color-accent), #ff4081);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.loader-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-accent), #ff4081);
+  border-radius: 12px;
+  transition: width 0.1s ease-out;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Full Laptop Screen Canvas Styling */
+#frame-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

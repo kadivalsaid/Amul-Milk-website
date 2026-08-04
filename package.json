@@ -1,0 +1,9 @@
+{
+  "name": "amul-milk-website",
+  "version": "1.0.0",
+  "description": "Amul Kool Frame Scroll Animation Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amul Kool - Rose Milk</title>
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              pink: "#e2165f",
+              yellow: "#ffb703",
+              dark: "#07090e"
+            },
+            primary: "#E85D75",
+            "background-light": "#FDF8F9",
+            "background-dark": "#1A1516",
+            "surface-light": "#FFFFFF",
+            "surface-dark": "#2A2425",
+            "text-light": "#33292A",
+            "text-dark": "#F3EBEB",
+            "text-muted-light": "#7A686B",
+            "text-muted-dark": "#A8989A"
+          },
+          fontFamily: {
+            display: ["Playfair Display", "serif"],
+            sans: ["Inter", "sans-serif"],
+            heading: ["Plus Jakarta Sans", "sans-serif"],
+            body: ["Be Vietnam Pro", "sans-serif"]
+          },
+          borderRadius: {
+            DEFAULT: "0.75rem",
+            'lg': '1rem',
+            'xl': '1.5rem'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-white font-sans antialiased m-0 p-0">
+
+  <!-- Transparent Fixed Navigation Bar -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-slate-950/40 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Brand Logo -->
+        <a href="#hero-scroll-track" class="flex items-center gap-2 group">
+          <span class="font-display font-bold text-2xl text-white tracking-wide">Amul <span class="text-primary italic">Kool</span></span>
+        </a>
+        
+        <!-- Navigation Menu Links -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#hero-scroll-track" class="text-sm font-medium text-slate-200 hover:text-primary transition-colors">Home</a>
+          <a href="#features" class="text-sm font-medium text-slate-200 hover:text-primary transition-colors">Features</a>
+          <a href="#experience" class="text-sm font-medium text-slate-200 hover:text-primary transition-colors">Experience</a>
+          <a href="#testimonials" class="text-sm font-medium text-slate-200 hover:text-primary transition-colors">Reviews</a>
+        </nav>
+
+        <!-- CTA Buy Button -->
+        <div class="flex items-center gap-4">
+          <a href="#buy" class="inline-flex items-center px-6 py-2.5 text-sm font-medium rounded-full shadow-lg text-white bg-primary hover:bg-pink-600 focus:outline-none transition-all transform hover:scale-105">
+            Buy Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Preloader Screen -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader-ring">
+        <div class="ring-core"></div>
+      </div>
+      <h1 class="loader-title">AMUL <span>KOOL</span></h1>
+      <p class="loader-subtitle">Loading 238 Frames...</p>
+      
+      <div class="progress-bar-container">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <div class="progress-info">
+        <span id="progress-percent" class="font-bold text-brand-yellow">0%</span>
+        <span id="progress-status">0 / 238 frames</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full Screen Laptop Frame Scroll Track -->
+  <div id="hero-scroll-track" class="relative w-full h-[450vh] bg-brand-dark">
+    
+    <!-- Sticky Full Viewport Canvas Container -->
+    <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden p-0 m-0">
+      
+      <!-- Canvas Frame Animation - Fills Entire Laptop Viewport -->
+      <canvas id="frame-canvas" class="w-full h-full block z-10"></canvas>
+
+      <!-- Heading & Subheading Overlay (Fades away at 30% scroll) -->
+      <div id="hero-text-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 pointer-events-none transition-opacity duration-100">
+        <h1 class="font-display text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] mb-3">
+          Amul <span class="text-primary italic">Kool</span>
+        </h1>
+        <p class="font-display text-xl sm:text-2xl lg:text-3xl text-pink-100/90 font-medium tracking-wide drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
+          The taste of India
+        </p>
+      </div>
+
+      <!-- Minimal Scroll Indicator & Frame Counter -->
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2">
+        <div class="flex items-center gap-3 bg-slate-950/80 border border-white/10 px-5 py-2.5 rounded-full backdrop-blur-md shadow-2xl">
+          <span class="material-symbols-outlined text-brand-pink text-sm animate-bounce">arrow_downward</span>
+          <span class="text-xs font-medium text-slate-300">Scroll to Animate</span>
+          <div class="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+            <div id="scrub-progress-bar" class="h-full bg-gradient-to-r from-brand-pink to-brand-yellow w-0 transition-all duration-75"></div>
+          </div>
+          <span id="frame-display-number" class="text-xs font-mono font-bold text-brand-yellow">1 / 238</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <section class="py-24 bg-surface-light dark:bg-surface-dark relative z-20" id="features">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="font-display text-4xl font-bold mb-4 text-text-light dark:text-text-dark">Crafted for Perfection</h2>
+        <p class="text-lg text-text-muted-light dark:text-text-muted-dark">Every bottle is a testament to our commitment to quality, taste, and your ultimate refreshment.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="text-center group">
+          <div class="mx-auto h-20 w-20 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span class="material-icons text-primary text-4xl">water_drop</span>
+          </div>
+          <h3 class="text-2xl font-display font-semibold mb-3 text-text-light dark:text-text-dark">Pure Milk Goodness</h3>
+          <p class="text-text-muted-light dark:text-text-muted-dark">Sourced from the finest farms, ensuring rich, creamy texture and essential nutrients in every sip.</p>
+        </div>
+        <div class="text-center group">
+          <div class="mx-auto h-20 w-20 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span class="material-icons text-primary text-4xl">local_florist</span>
+          </div>
+          <h3 class="text-2xl font-display font-semibold mb-3 text-text-light dark:text-text-dark">Real Rose Extracts</h3>
+          <p class="text-text-muted-light dark:text-text-muted-dark">Infused with authentic rose petals for that distinct, delicate aroma and naturally sweet flavor profile.</p>
+        </div>
+        <div class="text-center group">
+          <div class="mx-auto h-20 w-20 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span class="material-icons text-primary text-4xl">ac_unit</span>
+          </div>
+          <h3 class="text-2xl font-display font-semibold mb-3 text-text-light dark:text-text-dark">Perfectly Chilled</h3>
+          <p class="text-text-muted-light dark:text-text-muted-dark">Designed to be consumed cold, delivering an instant burst of cooling refreshment on a hot day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="py-24 bg-background-light dark:bg-background-dark relative z-20" id="experience">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1 mt-12 lg:mt-0 relative">
+          <div class="aspect-w-4 aspect-h-5 rounded-2xl overflow-hidden shadow-2xl">
+            <div class="w-full h-full min-h-[500px] bg-gradient-to-tr from-pink-200 to-pink-50 dark:from-pink-900 dark:to-surface-dark flex items-center justify-center relative group">
+              <span class="material-icons text-6xl text-primary/50 group-hover:scale-110 transition-transform">spa</span>
+              <div class="absolute inset-0 bg-black/10 dark:bg-black/40"></div>
+            </div>
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-surface-light dark:bg-surface-dark p-6 rounded-xl shadow-xl max-w-xs">
+            <div class="flex items-center gap-4">
+              <span class="material-icons text-primary text-3xl">star</span>
+              <div>
+                <p class="font-bold text-lg text-text-light dark:text-text-dark">Premium Quality</p>
+                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Guaranteed freshness</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="font-display text-4xl lg:text-5xl font-bold mb-6 text-text-light dark:text-text-dark">The Flavor <br/><span class="text-primary italic">Experience</span></h2>
+          <p class="text-lg text-text-muted-light dark:text-text-muted-dark mb-8">
+            Imagine the velvety smoothness of premium milk meeting the fragrant, subtle sweetness of fresh roses. It's not just a drink; it's a moment of tranquility in a bottle.
+          </p>
+          <ul class="space-y-6">
+            <li class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <span class="material-icons text-primary">check_circle</span>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-xl font-bold text-text-light dark:text-text-dark">Aromatic First Sip</h4>
+                <p class="mt-1 text-text-muted-light dark:text-text-muted-dark">The scent hits you first, preparing your palate for the floral notes.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <span class="material-icons text-primary">check_circle</span>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-xl font-bold text-text-light dark:text-text-dark">Creamy Mid-Palate</h4>
+                <p class="mt-1 text-text-muted-light dark:text-text-muted-dark">Rich milk provides a comforting, substantial body to the beverage.</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <span class="material-icons text-primary">check_circle</span>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-xl font-bold text-text-light dark:text-text-dark">Refreshing Finish</h4>
+                <p class="mt-1 text-text-muted-light dark:text-text-muted-dark">Leaves a clean, cool sensation that makes you want another sip.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-24 bg-surface-light dark:bg-surface-dark relative z-20" id="testimonials">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl font-bold mb-4 text-text-light dark:text-text-dark">Loved by Thousands</h2>
+        <p class="text-lg text-text-muted-light dark:text-text-muted-dark">Don't just take our word for it.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-background-light dark:bg-background-dark p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+          <div class="flex items-center space-x-1 text-yellow-400 mb-4">
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+          </div>
+          <p class="text-text-muted-light dark:text-text-muted-dark italic mb-6">"The rose flavor is perfectly balanced—not too overpowering, just right. It's my go-to summer drink now."</p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center font-bold text-gray-500">S</div>
+            <div class="ml-3">
+              <p class="text-sm font-bold text-text-light dark:text-text-dark">Priya S.</p>
+              <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Verified Buyer</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-background-light dark:bg-background-dark p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+          <div class="flex items-center space-x-1 text-yellow-400 mb-4">
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+          </div>
+          <p class="text-text-muted-light dark:text-text-muted-dark italic mb-6">"Reminds me of my childhood favorites but feels so much more premium. Always keep a few bottles in the fridge."</p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center font-bold text-gray-500">R</div>
+            <div class="ml-3">
+              <p class="text-sm font-bold text-text-light dark:text-text-dark">Rahul M.</p>
+              <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Verified Buyer</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-background-light dark:bg-background-dark p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+          <div class="flex items-center space-x-1 text-yellow-400 mb-4">
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star</span>
+            <span class="material-icons text-sm">star_half</span>
+          </div>
+          <p class="text-text-muted-light dark:text-text-muted-dark italic mb-6">"Incredibly refreshing after a workout. The creamy texture combined with the chill is unbeatable."</p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center font-bold text-gray-500">A</div>
+            <div class="ml-3">
+              <p class="text-sm font-bold text-text-light dark:text-text-dark">Anita K.</p>
+              <p class="text-xs text-text-muted-light dark:text-text-muted-dark">Verified Buyer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buy Section -->
+  <section class="py-24 relative overflow-hidden bg-primary z-20" id="buy">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full border-[20px] border-white"></div>
+      <div class="absolute bottom-10 right-10 w-64 h-64 rounded-full border-[15px] border-white"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center text-white">
+      <h2 class="font-display text-4xl lg:text-5xl font-bold mb-6">Ready to Taste the Refreshment?</h2>
+      <p class="text-xl mb-10 opacity-90 max-w-2xl mx-auto">
+        Find Amul Cool Rose Milk at your nearest store or order online for delivery straight to your door.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a class="inline-flex justify-center items-center px-8 py-4 border-2 border-white text-lg font-medium rounded-full text-primary bg-white hover:bg-transparent hover:text-white transition-all" href="#">
+          Find Near You
+        </a>
+        <a class="inline-flex justify-center items-center px-8 py-4 border-2 border-transparent text-lg font-medium rounded-full text-white bg-black/20 hover:bg-black/30 transition-all" href="#">
+          Order Online
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 pt-16 pb-8 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="col-span-1 md:col-span-2">
+          <span class="font-display font-bold text-2xl text-primary mb-4 block">Amul Cool</span>
+          <p class="text-text-muted-light dark:text-text-muted-dark max-w-sm">
+            Bringing you the freshest, most delicious milk beverages crafted with care and tradition.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-text-light dark:text-text-dark">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" href="#">Our Story</a></li>
+            <li><a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" href="#features">Features</a></li>
+            <li><a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" href="#buy">Store Locator</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-text-light dark:text-text-dark">Connect</h4>
+          <div class="flex space-x-4">
+            <a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" href="#">
+              <span class="material-icons">facebook</span>
+            </a>
+            <a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" href="#">
+              <span class="material-icons">photo_camera</span> 
+            </a>
+            <a class="text-text-muted-light dark:text-text-muted-dark hover:text-primary transition-colors" href="#">
+              <span class="material-icons">chat</span> 
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 dark:border-gray-800 pt-8 text-center text-sm text-text-muted-light dark:text-text-muted-dark">
+        <p>© 2023 Amul Cool. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
